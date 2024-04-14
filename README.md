@@ -1,3 +1,4 @@
+
 # EllipticalTrackingwithControls
 
 This module contains python scripts as well as a ROS workspace to implement a monocular vision based global localization system. 
@@ -58,11 +59,38 @@ Set the following values on the respective lines in the Ellipse_Detect_ROS.py sc
 
 **D.  Camera Location**  
 This parameter will change the origin of the estimated localization of the system. These values are offset from the center of the camera lens  
-**Lines 138 - 140:** Change the constant offset values (currently 1.56, -0.29, and 3.97) to fit where you want the origin of your global localization system. If they are all set to 0.0, then the center of the camera lens will be the origin.   
+**Lines 138 - 140:** Change the constant offset values (currently 1.56, -0.29, and 3.97) to fit where you want the origin of your global localization system. These will be in the same units used for your ring diameter in the next section. If they are all set to 0.0, then the center of the camera lens will be the origin.   
 **NOTE:** The camera lens is to be parallel to your desired global localization frame. If the camera lens is tilted, the global frame will be by the same amount of degrees.  
 
 
+### 2. Setting Circular Ring Target Parameters 
+Set the following values on the respective lines in the Ellipse_Detect_ROS.py script:
+	
+**A.  Ring Diameter**    
+**Line 166:** Change variable 'ellipse_diameter' to the rings diameter. The units of this measurement will decide the positional units of the localization system  
+
+**A.  Ring Color**   
+**Line 318:** Change variable 'lower_pink' to the lower HSV threshold values for the rings color.  
+**Line 319:** Change variable 'upper_pink' to the upper HSV threshold values for the rings color.  
+**NOTE:** These can be found using the script '___' in the 'Examples' directory. Run the script using an image of the tracked ring and move the sliders until everything but the ring is being filtered.
 
 
 ## How to Run
+To run the system after building the workspace and setting the correct parameters, all that needs to be done is to source the workspace and run 'Ellipse_Detect_ROS.py' script.
 
+From the workspace root, run the following commands:
+	```
+	source devel/setup.bash
+	roscore
+	python3 /src/ellipse_detect/src/Ellipse_Detect_ROS.py
+	```
+
+This will begin the localization system.
+
+If everything works, a video screen of the webcam will display and draw detected ellipses over their found locations. In addition, the estimated position will display in the corner.
+
+Make sure that ellipses are only being detected on your ring object and that the estimated position is what you assume it to be.
+
+All of the localization estimations are broadcasted on the ROS topic '\Coordinates' using the custom message defined in the 'ellipse_detect/msg' directory.
+
+Example scripts are provide in the 'Examples' directory that are used for real-time experimentation with DJI Tello drones. These can be used for experimentation or you can develop your own interface using the localization.
