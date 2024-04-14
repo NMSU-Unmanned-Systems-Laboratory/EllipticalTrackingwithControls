@@ -78,7 +78,7 @@ Set the following values on the respective lines in the Ellipse_Detect_ROS.py sc
 ## How to Run
 To run the system after building the workspace and setting the correct parameters, all that needs to be done is to source the workspace and run 'Ellipse_Detect_ROS.py' script.
 
-From the workspace root, run the following commands:
+From the workspace root, run the following commands:  
 	```
 	source devel/setup.bash
 	roscore
