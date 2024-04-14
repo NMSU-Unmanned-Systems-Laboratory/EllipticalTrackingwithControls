@@ -80,9 +80,9 @@ To run the system after building the workspace and setting the correct parameter
 
 From the workspace root, run the following commands:  
 	```
-	source devel/setup.bash
-	roscore
-	python3 /src/ellipse_detect/src/Ellipse_Detect_ROS.py
+	source devel/setup.bash  
+	roscore  
+	python3 /src/ellipse_detect/src/Ellipse_Detect_ROS.py  
 	```
 
 This will begin the localization system.
