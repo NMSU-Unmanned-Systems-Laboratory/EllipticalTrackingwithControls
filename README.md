@@ -9,7 +9,7 @@ The requirements for implementation are as follows:
 
 - A Linux system installed with a version of ROS 1
 - An RGB web-camera with known resolution and FOV
-- distinctly colored ring object with known diameter. (The center of this ring is what will be tracked by the system)
+- Distinctly colored ring object with known diameter. (The center of this ring is what will be tracked by the system)
 - Installation of Python as well as open CV
 
 ## ROS Workspace Setup
